@@ -1,24 +1,63 @@
-def vec_add(vec_one, vec_two) -> list:
+def vec_add() -> list:
+    vec_one , vec_two = get_vectors()
     assert len(vec_one) == len(vec_two), "Vectors are of different length."
-    return [i + j for i, j in zip(vec_one, vec_two)]
+    print(f"Addition of {vec_one} + {vec_two} is : ", end = "")
+    print([i + j for i, j in zip(vec_one, vec_two)])
 
-def vec_sub(vec_one, vec_two) -> list:
+def vec_sub() -> list:
+    vec_one , vec_two = get_vectors()
     assert len(vec_one) == len(vec_two), "Vectors are of different length."
-    return [i - j for i, j in zip(vec_one, vec_two)]
+    print(f"Subtraction of {vec_one} - {vec_two} is : ", end = "")
+    print([i - j for i, j in zip(vec_one, vec_two)])
 
-def scalar_mul(scalar_num, vec) -> list:
-    return [scalar_num * i for i in vec]
+def scalar_mul() -> list:
+    vec_one = list()
+    length_one = int(input("Enter size of the vector: "))
+    print("Enter Vector Elements For The Vector: ")
+    for _ in range(length_one):
+        vec_one.append(int(input()))
+    scalar_num = int(input("Enter the scalar number: "))
+    print(f"Multiplying the Scalar {scalar_num} with {vec_one} is : ", end = "")
+    print([scalar_num * i for i in vec_one])
 
-def dot_prod(vec_one, vec_two) -> list:
+def dot_prod() -> list:
+    vec_one , vec_two = get_vectors()
     assert len(vec_one) == len(vec_two), "Vectors are of different length."
-    return sum(i * j for i, j in zip(vec_one, vec_two))
+    print(f"Dot Product of {vec_one} (dot) {vec_two} is : ", end = "")
+    print(sum(i * j for i, j in zip(vec_one, vec_two)))
 
-def vec_length():
-    pass
+def vec_length() -> int:
+    vec = list()
+    num_of_vec = int(input("How many vectors to compare?"))
+    for x in range(num_of_vec):
+        temp = list()
+        print(f"Enter {x} Vector Elements, END = N")
+        while(True):
+            element = input("Enter Vector Elements: \n")
+            if element == "N" :
+                break;
+            else:
+                temp.append(element)
+        vec.append(temp)
+    for x in range(len(vec)):
+        print(f"Length of {vec[x]} is {len(vec[x])}")
+
+def get_vectors() -> list:
+    vec_one = list()
+    vec_two = list()
+    length_one = int(input("Enter size of the first vector: "))
+    length_two = int(input("Enter size of the second vector: "))
+    print("Enter Vector Elements For First Vector: ")
+    for x in range(length_one):
+        vec_one.append(int(input()))
+    print("Enter Vector Elements For Second Vector: ")
+    for x in range(length_two):
+        vec_two.append(int(input()))   
+    return vec_one, vec_two
 
 def main():
     while(True):
-        print("ENTER 1 FOR ADDITION")
+        print("\nENTER 1 FOR ADDITION")
         print("ENTER 2 FOR SUBTRACTION")
         print("ENTER 3 FOR SCALAR MULTIPLICATION")
         print("ENTER 4 FOR DOT PRODUCT")
