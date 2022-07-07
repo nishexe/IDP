@@ -14,10 +14,7 @@ def binomial(n: int, p: float) -> int:
 def binomial_histogram(p, n, num_points) -> None:
     data = [binomial(n, p) for _ in range(num_points)]
     histogram = Counter(data)
-    plt.bar([x - 0.4 for x in histogram.keys()],
-            [v / num_points for v in histogram.values()],
-            0.8,
-            color='teal')
+    plt.bar([x - 0.4 for x in histogram.keys()],[v / num_points for v in histogram.values()],0.8,color='teal')
     mu = p * n
     sigma = math.sqrt(n * p * (1 - p))
     xs = range(min(data), max(data) + 1)
